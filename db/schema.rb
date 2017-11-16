@@ -15,6 +15,17 @@ ActiveRecord::Schema.define(version: 20171111180935) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "urls", force: :cascade do |t|
+    t.text "original"
+    t.string "slug"
+    t.integer "counter", default: 0
+    t.datetime "expired_at", default: "2017-12-01 03:47:26"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_urls_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
