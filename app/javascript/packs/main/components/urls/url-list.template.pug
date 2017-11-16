@@ -1,0 +1,36 @@
+.page-header
+    h1 Listing
+    p(ng-if='$ctrl.urls.length === 0') List is empty
+table.table.table-bordered.table-striped.action-table(ng-if='$ctrl.urls.length !== 0')
+    thead
+        tr
+            th Id
+            th Url
+            th Slug
+            th 
+                a(href='#' ng-click='$ctrl.sortType = "counter"; $ctrl.sortReverse = !$ctrl.sortReverse ') Usings 
+                    span.fa(ng-show='$ctrl.sortType === "counter"' ng-class='$ctrl.sortReverse ? "fa-caret-up" : "fa-caret-down"')
+            th 
+                a(href='#' ng-click='$ctrl.sortType = "days_left"; $ctrl.sortReverse = !$ctrl.sortReverse') Live 
+                    span.fa.fa-caret-down(ng-show='$ctrl.sortType === "days_left"')
+            th(colspan='2') Actions
+    tbody
+        tr(ng-repeat='url in $ctrl.urls | orderBy:$ctrl.sortType:$ctrl.sortReverse')
+            td {{url.id}}
+            td {{url.original.length > 50 ? url.original.slice(0,50) + '...' : url.original}}
+            td {{url.slug}}
+            td {{url.counter}}
+            td {{$ctrl.days_left[url.id]}} dayls left
+
+             
+            td 
+                a.btn.btn-info.btn-xs(ui-sref='show({id: url.id})' 
+                                      uib-popover='{{$ctrl.popovers[0]}}' 
+                                      popover-trigger="{'mouseenter': 'mouseleave'}")
+                    span.glyphicon.glyphicon-search
+            td 
+                btn.btn.btn-danger.btn-xs(type='button' 
+                                          ng-click='$ctrl.delete(url)' 
+                                          uib-popover='{{$ctrl.popovers[1]}}'
+                                          popover-trigger="{'mouseenter': 'mouseleave'}")
+                    span.glyphicon.glyphicon-remove

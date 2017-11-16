@@ -1,0 +1,38 @@
+.page-header
+    h1 Details
+.url-container.clearfix
+    .pull-left
+        .input-group.input-wrapper
+            .input-group-addon
+                span Short url
+            input.form-control(type='text' readonly spellcheck='false' value='{{$ctrl.shortUrl}}')
+    .pull-right
+        button.btn.btn-default(type='button'
+                               ngclipboard
+                               ngclipboard-success="$ctrl.onPopoverSuccess()"
+                               data-clipboard-text='{{$ctrl.shortUrl}}'
+                               uib-popover='{{$ctrl.popovers[0]}}'
+                               popover-trigger="{'click': 'mouseleave', 'mouseenter': 'mouseleave'}"
+                               ng-mouseleave='$ctrl.resetPopoverText()')
+            span.glyphicon.glyphicon-copy
+        a.btn.btn-success(type='button' 
+                          ui-sref='redirector({slug: $ctrl.url.slug})'
+                          target='_blank'
+                          uib-popover='{{$ctrl.popovers[1]}}'
+                          popover-trigger="{'mouseenter': 'mouseleave'}") Go!
+br
+ul.list-group
+    li.list-group-item 
+        h4.list-group-item-heading Original url
+        p.list-group-item-text {{$ctrl.url.original}}
+    li.list-group-item
+        h4.list-group-item-heading Usings
+        p.list-group-item-text {{$ctrl.url.counter}}
+    li.list-group-item
+        h4.list-group-item-heading Created at
+        p.list-group-item-text {{$ctrl.created_at}}
+    li.list-group-item
+        h4.list-group-item-heading Expired at
+        p.list-group-item-text {{$ctrl.expired_at}}
+br
+a.btn.btn-black(ui-sref='list') Back
