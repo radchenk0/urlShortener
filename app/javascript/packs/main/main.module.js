@@ -10,6 +10,7 @@ import ngClipboard from 'ngclipboard';
 // components import
 import { app } from './components/app/app.component';
 import { home } from './components/home/home.component';
+import { signUp } from './components/signUp/signUp.component';
 
 // services import
 import { UrlService } from './components/urls/url.service';
@@ -49,3 +50,4 @@ MAIN_MODULE.directive('validateUrl', validateUrl);
 
 MAIN_MODULE.component('app', app);
 MAIN_MODULE.component('home', home);
+MAIN_MODULE.component('signUp', signUp);
