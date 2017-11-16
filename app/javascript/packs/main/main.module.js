@@ -22,7 +22,8 @@ export const MAIN_MODULE = angular.module('main', [
   ngClipboard
 ]);
 
-MAIN_MODULE.config(($uiRouterProvider, $locationProvider) => {
+MAIN_MODULE.config(($uiRouterProvider, $locationProvider, $authProvider, $qProvider) => {
+  $qProvider.errorOnUnhandledRejections(false);
   $locationProvider.html5Mode(true);
   $uiRouterProvider.trace.enable(1);
 });
