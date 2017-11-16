@@ -9,6 +9,7 @@ import ngClipboard from 'ngclipboard';
 
 // components import
 import { app } from './components/app/app.component';
+import { home } from './components/home/home.component';
 
 // services import
 import { UrlService } from './components/urls/url.service';
@@ -36,6 +37,7 @@ MAIN_MODULE.config(($uiRouterProvider, $locationProvider, $authProvider, $qProvi
   $locationProvider.html5Mode(true);
   mainStates.forEach(state => $uiRouterProvider.stateRegistry.register(state));
   $uiRouterProvider.trace.enable(1);
+  $uiRouterProvider.urlService.rules.otherwise({ state: 'home' });
 
 });
 
@@ -46,3 +48,4 @@ MAIN_MODULE.directive('compareTo', compareTo);
 MAIN_MODULE.directive('validateUrl', validateUrl);
 
 MAIN_MODULE.component('app', app);
+MAIN_MODULE.component('home', home);
