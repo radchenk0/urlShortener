@@ -9,7 +9,9 @@ import ngClipboard from 'ngclipboard';
 
 
 // services import
+import { UrlService } from './components/urls/url.service';
 import { FlashService } from './components/app/flash.service';
+
 export const MAIN_MODULE = angular.module('main', [
   'ngStorage',
   collapse,
@@ -25,5 +27,6 @@ MAIN_MODULE.config(($uiRouterProvider, $locationProvider) => {
   $uiRouterProvider.trace.enable(1);
 });
 
+MAIN_MODULE.service('UrlService', UrlService);
 MAIN_MODULE.service('FlashService', FlashService);
 
