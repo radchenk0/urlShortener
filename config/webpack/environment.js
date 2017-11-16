@@ -1,3 +1,8 @@
-const { environment } = require('@rails/webpacker')
+const { environment } = require('@rails/webpacker');
 
-module.exports = environment
+environment.loaders.set('pug', {
+    test: /\.pug$/,
+    use: ['html-loader', 'pug-html-loader']
+});
+
+module.exports = environment;

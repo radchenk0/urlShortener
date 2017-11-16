@@ -1,7 +1,7 @@
 doctype html
 html
-  head
-    title Url Shortener
-    = javascript_pack_tag 'application'
-  body
-    == yield
+    head
+        title Url Shortener
+        = javascript_pack_tag 'application'
+    body[ng-app='url-shortener']
+        == yield
