@@ -7,6 +7,11 @@ import modal from 'angular-ui-bootstrap/src/modal';
 import ngMessages from 'angular-messages';
 import ngClipboard from 'ngclipboard';
 
+
+// services import
+import { UrlService } from './components/urls/url.service';
+import { FlashService } from './components/app/flash.service';
+
 export const MAIN_MODULE = angular.module('main', [
   'ngStorage',
   collapse,
@@ -17,8 +22,12 @@ export const MAIN_MODULE = angular.module('main', [
   ngClipboard
 ]);
 
-MAIN_MODULE.config(($uiRouterProvider, $locationProvider) => {
+MAIN_MODULE.config(($uiRouterProvider, $locationProvider, $authProvider, $qProvider) => {
+  $qProvider.errorOnUnhandledRejections(false);
   $locationProvider.html5Mode(true);
   $uiRouterProvider.trace.enable(1);
 });
+
+MAIN_MODULE.service('UrlService', UrlService);
+MAIN_MODULE.service('FlashService', FlashService);
 
