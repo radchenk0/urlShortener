@@ -7,6 +7,9 @@ import modal from 'angular-ui-bootstrap/src/modal';
 import ngMessages from 'angular-messages';
 import ngClipboard from 'ngclipboard';
 
+
+// services import
+import { FlashService } from './components/app/flash.service';
 export const MAIN_MODULE = angular.module('main', [
   'ngStorage',
   collapse,
@@ -21,4 +24,6 @@ MAIN_MODULE.config(($uiRouterProvider, $locationProvider) => {
   $locationProvider.html5Mode(true);
   $uiRouterProvider.trace.enable(1);
 });
+
+MAIN_MODULE.service('FlashService', FlashService);
 
