@@ -10,4 +10,5 @@ Rails.application.routes.draw do
     delete 'users/:user_id/urls/:id', to: 'urls#destroy'
   end
 
+  get '*path', to: 'home#index'
 end
