@@ -62,3 +62,16 @@ MAIN_MODULE.component('urlShow', urlShow);
 MAIN_MODULE.component('urlNew', urlNew);
 MAIN_MODULE.component('modalConfirm', modalConfirm);
 
+MAIN_MODULE.run(($rootScope, $state, $localStorage) => {
+  $rootScope.$on('auth:registration-email-success', event => {
+    $state.go('signIn', {}, { reload: true });
+  });
+  $rootScope.$on('auth:login-success', (event, user) => {
+    $localStorage.user = user;
+    $state.go('list', {}, { reload: true });
+  });
+  $rootScope.$on('auth:logout-success', (event, user) => {
+    $localStorage.user = undefined;
+    $state.go('signIn', {}, { reload: true });
+  });
+})
