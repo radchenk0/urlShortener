@@ -14,6 +14,7 @@ import { signUp } from './components/signUp/signUp.component';
 import { signIn } from './components/signIn/signIn.component';
 import { urlList } from './components/urls/url-list.component';
 import { urlNew } from './components/urls/url-new.component';
+import { urlShow} from './components/urls/url-show.component';
 import { modalConfirm } from './components/urls/modal-confirm.component';
 
 // services import
@@ -57,6 +58,7 @@ MAIN_MODULE.component('home', home);
 MAIN_MODULE.component('signUp', signUp);
 MAIN_MODULE.component('signIn', signIn);
 MAIN_MODULE.component('urlList', urlList);
+MAIN_MODULE.component('urlShow', urlShow);
 MAIN_MODULE.component('urlNew', urlNew);
 MAIN_MODULE.component('modalConfirm', modalConfirm);
 
