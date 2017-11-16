@@ -1,0 +1,31 @@
+.page-header
+    h1 Authentication
+form(role='form'
+     name='form'
+     ng-submit='$ctrl.submit(form.$valid)'
+     novalidate)
+    .form-group(ng-class!="{ 'has-error': form.email.$touched && form.email.$invalid, 'has-success': form.email.$touched && form.email.$valid }")
+        .input-group.input-wrapper
+            .input-group-addon
+                span.glyphicon @
+            input.form-control( type='email' 
+                                name='email'
+                                ng-model='$ctrl.email' 
+                                placeholder='E-mail*'
+                                required)
+        .help-block(ng-messages='form.email.$error' ng-show='form.email.$touched')
+            include validationErrors.pug
+    .form-group(ng-class!="{ 'has-error': form.password.$touched && form.password.$invalid, 'has-success': form.password.$touched && form.password.$valid }")
+        .input-group.input-wrapper
+            .input-group-addon
+                i.fa.fa-key(aria-hidden='true')
+            input.form-control( type='password'
+                                ng-model='$ctrl.password'
+                                name='password'
+                                placeholder='Password*'
+                                ng-minlength='8'
+                                required)
+        .help-block(ng-messages='form.password.$error' ng-show='form.password.$touched')
+            include validationErrors.pug
+    .form-group
+        button.btn.btn-black.btn-block(type='submit' ng-disabled='form.$invalid') Go!

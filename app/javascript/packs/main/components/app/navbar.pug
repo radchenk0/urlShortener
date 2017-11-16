@@ -1,0 +1,35 @@
+nav.navbar.navbar-inverse.navbar-fixed-top
+        .container
+            .navbar-header
+                button.navbar-toggle(type='button' ng-click='$ctrl.isCollapsed = !$ctrl.isCollapsed')
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(ui-sref='home' ui-sref-active='active') Url Shortener
+            .collapse.navbar-collapse(uib-collapse='$ctrl.isCollapsed')
+                ul.nav.navbar-nav
+                    li(ng-if='$ctrl.user' ui-sref-active='active')
+                        a(ui-sref='new') 
+                            span.glyphicon.glyphicon-plus.green
+                            |   New
+                    li(ng-if='$ctrl.user' ui-sref-active='active')
+                        a(ui-sref='list') 
+                            span.glyphicon.glyphicon-th-list
+                            |   Listing
+                ul.nav.navbar-nav.navbar-right
+                    li(ng-if='!$ctrl.user' ui-sref-active='active')
+                        a(ui-sref='signUp')
+                            span.glyphicon.glyphicon-user
+                            |  SignUp
+                    li(ng-if='!$ctrl.user' ui-sref-active='active')
+                        a(ui-sref='signIn')
+                            span.glyphicon.glyphicon-log-in
+                            |  SignIn
+                    li(ng-if='$ctrl.user')
+                        p.navbar-text 
+                            span.glyphicon.glyphicon-user   
+                            |  {{$ctrl.user.name || $ctrl.user.email}}
+                    li(ng-if='$ctrl.user')
+                         a(href='#' ng-click='$ctrl.logOut()')
+                            span.glyphicon.glyphicon-log-out
+                            |  LogOut
