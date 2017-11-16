@@ -14,6 +14,10 @@ import { app } from './components/app/app.component';
 import { UrlService } from './components/urls/url.service';
 import { FlashService } from './components/app/flash.service';
 
+// directives import
+import { compareTo } from './directives/compareTo.directive';
+import { validateUrl } from './directives/validateUrl.directive';
+
 // states import
 import { mainStates } from './main.states';
 
@@ -37,5 +41,8 @@ MAIN_MODULE.config(($uiRouterProvider, $locationProvider, $authProvider, $qProvi
 
 MAIN_MODULE.service('UrlService', UrlService);
 MAIN_MODULE.service('FlashService', FlashService);
+
+MAIN_MODULE.directive('compareTo', compareTo);
+MAIN_MODULE.directive('validateUrl', validateUrl);
 
 MAIN_MODULE.component('app', app);
