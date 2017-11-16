@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get '/:slug', to: 'home#redirect'
+
   namespace :api do
     mount_devise_token_auth_for 'User', at: 'auth'
     get 'users/:user_id/urls', to: 'urls#index'
