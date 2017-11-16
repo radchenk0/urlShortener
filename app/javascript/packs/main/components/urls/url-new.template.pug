@@ -1,0 +1,36 @@
+.page-header
+    h1 Generate your short URL
+form(role='form'
+     name='form'
+     ng-submit='$ctrl.submit(form.$valid)'
+     novalidate)
+    .form-group(ng-class!="{ 'has-error': form.original.$touched && form.original.$invalid, 'has-success': form.original.$touched && form.original.$valid }")
+        .input-group.input-wrapper
+            .input-group-addon
+                span.glyphicon.glyphicon-link
+            input.form-control( type='url' 
+                                name='original'
+                                ng-model='$ctrl.original'
+                                placeholder='URL*'
+                                required
+                                validate-url)
+        .help-block(ng-messages='form.original.$error' ng-show='form.original.$touched')
+            include validationErrors.pug
+    .form-group(ng-class!="{ 'has-error': form.slug.$touched && form.slug.$invalid, 'has-success': form.slug.$touched && form.slug.$valid }")
+        .input-group.input-wrapper
+            .input-group-addon
+                i.fa.fa-key(aria-hidden='true')
+            input.form-control( type='text'
+                                ng-model='$ctrl.slug'
+                                name='slug'
+                                placeholder='Desired short URL key (optional)'
+                                ng-pattern='$ctrl.slugPattern')
+        .help-block(ng-messages='form.slug.$error' ng-show='form.slug.$touched')
+            include validationErrors.pug
+    .form-group
+        .help-block.text-muted Example: http://www.example.com/
+            |<b>{{$ctrl.slug}}</b>
+    .form-group
+        button.btn.btn-black.btn-block(type='submit' ng-disabled='form.$invalid') Generate
+
+        

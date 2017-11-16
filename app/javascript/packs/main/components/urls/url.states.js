@@ -10,4 +10,15 @@ export const urlStates = [{
     }
   }
 },
+{
+  parent: 'app',
+  name: 'new',
+  url: '/urls/new',
+  component: 'urlNew',
+  resolve: {
+    user: $auth => {
+      return $auth.validateUser();
+    }
+  }
+}
 ];
