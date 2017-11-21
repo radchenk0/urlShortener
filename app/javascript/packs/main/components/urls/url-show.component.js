@@ -7,7 +7,7 @@ class UrlShowController {
 
     $onInit() {
         this.popovers = ['Copy to clipboard', 'Try your short url!'];
-        this.shortUrl = 'http://localhost:3000/' + this.url.slug;
+        this.shortUrl = HOSTNAME + '/' + this.url.slug;
         this.expired_at = format(new Date(this.url.expired_at));
         this.created_at = format(new Date(this.url.created_at));
     }
