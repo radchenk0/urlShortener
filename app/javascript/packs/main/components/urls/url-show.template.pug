@@ -15,8 +15,7 @@
                                popover-trigger="{'click': 'mouseleave', 'mouseenter': 'mouseleave'}"
                                ng-mouseleave='$ctrl.resetPopoverText()')
             span.glyphicon.glyphicon-copy
-        a.btn.btn-success(type='button' 
-                          ui-sref='redirector({slug: $ctrl.url.slug})'
+        a.btn.btn-success(ng-href='{{$ctrl.shortUrl}}'
                           target='_blank'
                           uib-popover='{{$ctrl.popovers[1]}}'
                           popover-trigger="{'mouseenter': 'mouseleave'}") Go!

@@ -7,7 +7,7 @@ export class UrlService {
 
     getUrls() {
         let { $http, userId, FlashService } = this;
-        return $http.get('http://localhost:3000/api/' + 'users/' + userId + '/urls')
+        return $http.get('/api/users/' + userId + '/urls')
         .then(
             response => {
                 return response.data
@@ -20,7 +20,7 @@ export class UrlService {
 
     getUrl(id) {
         let { $http, userId, FlashService } = this;
-        return $http.get('http://localhost:3000/api/' + 'users/' + userId + '/urls/' + id)
+        return $http.get('/api/users/' + userId + '/urls/' + id)
         .then(
             response => {
                 return response.data
@@ -33,7 +33,7 @@ export class UrlService {
 
     createUrl(url) {
         let { $http, userId, FlashService } = this;
-        $http.post('http://localhost:3000/api/' + 'users/' + userId + '/urls/', JSON.stringify(url))
+        $http.post('/api/users/' + userId + '/urls/', JSON.stringify(url))
         .then(
             response => {
                 FlashService.addAlert('success', 'Url successfully created');
@@ -48,7 +48,7 @@ export class UrlService {
 
     deleteUrl(id) {
         let { $http, userId, FlashService } = this;
-        $http.delete('http://localhost:3000/api/' + 'users/' + userId + '/urls/' + id)
+        $http.delete('/api/users/' + userId + '/urls/' + id)
         .then(
             response => {
                 FlashService.addAlert('success', 'Url successfully deleted');
