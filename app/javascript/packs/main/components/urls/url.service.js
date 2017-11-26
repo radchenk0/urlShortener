@@ -1,5 +1,6 @@
 export class UrlService {
     constructor($http, $localStorage, FlashService) {
+        "ngInject";
         this.$http = $http;
         this.userId = $localStorage.user.id;
         this.FlashService = FlashService;
@@ -59,5 +60,3 @@ export class UrlService {
         );
     }
 }
-
-UrlService.$inject = ['$http', '$localStorage', 'FlashService'];

@@ -1,5 +1,6 @@
 export class FlashService {
     constructor($rootScope) {
+        "ngInject";
         this.$rootScope = $rootScope;
         this.$rootScope.alerts = [];
     }
@@ -17,6 +18,3 @@ export class FlashService {
         $rootScope.alerts.splice(index, 1);
     }
 }
-
-FlashService.$inject = ['$rootScope'];
-

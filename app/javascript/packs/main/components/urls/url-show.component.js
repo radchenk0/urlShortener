@@ -2,6 +2,7 @@ import urlShowTemplate from "./url-show.template.pug";
 
 class UrlShowController {
     constructor($timeout) {
+        "ngInject";
         this.$timeout = $timeout;
     }
 
@@ -21,8 +22,6 @@ class UrlShowController {
         $timeout(() => { this.popovers[0] = 'Copy to clipboard';}, 300);
     }
 }
-
-UrlShowController.$inject = ['$timeout'];
 
 const format = (inputDate) => {
     let date = inputDate.getDate();

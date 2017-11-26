@@ -4,9 +4,13 @@ export const urlStates = [{
   url: '/urls',
   component: 'urlList',
   resolve: {
-    user: $auth => $auth.validateUser(),
-    urls: (UrlService) => {
-      return UrlService.getUrls()
+    user: function($auth) {
+      "ngInject";
+      return $auth.validateUser();
+    }, 
+    urls: function(UrlService) {
+      "ngInject";
+      return UrlService.getUrls();
     }
   }
 },
@@ -16,11 +20,13 @@ export const urlStates = [{
   url: '/urls/{id}',
   component: 'urlShow',
   resolve: {
-    user: $auth => {
+    user: function($auth) {
+      "ngInject";
       return $auth.validateUser();
     },
-    url: (UrlService, $transition$) => {
-      return UrlService.getUrl($transition$.params().id)
+    url: function(UrlService, $transition$) {
+      "ngInject";
+      return UrlService.getUrl($transition$.params().id);
     }
   }
 },
@@ -30,7 +36,8 @@ export const urlStates = [{
   url: '/urls/new',
   component: 'urlNew',
   resolve: {
-    user: $auth => {
+    user: function($auth) {
+      "ngInject";
       return $auth.validateUser();
     }
   }
