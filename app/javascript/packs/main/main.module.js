@@ -21,7 +21,7 @@ import { modalConfirm } from './components/urls/modal-confirm.component';
 import { UrlService } from './components/urls/url.service';
 import { FlashService } from './components/app/flash.service';
 
-// directives import
+// // directives import
 import { compareTo } from './directives/compareTo.directive';
 import { validateUrl } from './directives/validateUrl.directive';
 
@@ -38,13 +38,13 @@ export const MAIN_MODULE = angular.module('main', [
   ngClipboard
 ]);
 
-MAIN_MODULE.config(($uiRouterProvider, $locationProvider, $authProvider, $qProvider) => {
+
+MAIN_MODULE.config(function($uiRouterProvider, $locationProvider, $qProvider) {
+  "ngInject";
   $qProvider.errorOnUnhandledRejections(false);
   $locationProvider.html5Mode(true);
   mainStates.forEach(state => $uiRouterProvider.stateRegistry.register(state));
-  $uiRouterProvider.trace.enable(1);
   $uiRouterProvider.urlService.rules.otherwise({ state: 'home' });
-
 });
 
 MAIN_MODULE.service('UrlService', UrlService);
@@ -62,7 +62,8 @@ MAIN_MODULE.component('urlShow', urlShow);
 MAIN_MODULE.component('urlNew', urlNew);
 MAIN_MODULE.component('modalConfirm', modalConfirm);
 
-MAIN_MODULE.run(($rootScope, $state, $localStorage) => {
+MAIN_MODULE.run(function($rootScope, $state, $localStorage) {
+  "ngInject";
   $rootScope.$on('auth:registration-email-success', event => {
     $state.go('signIn', {}, { reload: true });
   });

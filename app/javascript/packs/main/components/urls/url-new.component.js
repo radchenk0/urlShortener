@@ -2,6 +2,7 @@ import urlNewTemplate from './url-new.template.pug';
 
 class UrlNewController {
     constructor($localStorage, UrlService, FlashService) {
+        "ngInject";
         this.$localStorage = $localStorage;
         this.UrlService = UrlService;
         this.FlashService = FlashService;
@@ -21,8 +22,6 @@ class UrlNewController {
         }
     }
 }
-
-UrlNewController.$inject = ['$localStorage', 'UrlService', 'FlashService'];
 
 export const urlNew = {
     controller: UrlNewController,

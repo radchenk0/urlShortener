@@ -2,6 +2,7 @@ import urlListTemplate from "./url-list.template.pug";
 
 class UrlListController {
     constructor(UrlService, FlashService, $uibModal) {
+        "ngInject";
         this.UrlService = UrlService;
         this.$uibModal = $uibModal;
         this.FlashService = FlashService;
@@ -38,8 +39,6 @@ class UrlListController {
             });
     }
 }
-
-UrlListController.$inject = ['UrlService', 'FlashService', '$uibModal'];
 
 export const urlList = {
     controller: UrlListController,

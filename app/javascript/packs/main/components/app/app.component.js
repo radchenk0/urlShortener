@@ -2,6 +2,7 @@ import appTemplate from './app.template.pug';
 
 class MainController {
   constructor($localStorage, $rootScope, $auth, FlashService) {
+    "ngInject";
     this.$localStorage = $localStorage;
     this.$rootScope = $rootScope;
     this.$auth = $auth;
@@ -27,8 +28,6 @@ class MainController {
         });
   }   
 }
-
-MainController.$inject = ['$localStorage', '$rootScope', '$auth', 'FlashService'];
 
 export const app = {
   controller: MainController,

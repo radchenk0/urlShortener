@@ -2,6 +2,7 @@ import signInTemplate from "./signIn.template.pug";
 
 class SignInController {
     constructor($auth, FlashService) {
+        "ngInject";
         this.$auth = $auth;
         this.FlashService = FlashService;
     }
@@ -23,8 +24,6 @@ class SignInController {
         }
     }
 }
-
-SignInController.$inject = ['$auth', 'FlashService'];
 
 export const signIn = {
     controller: SignInController,
