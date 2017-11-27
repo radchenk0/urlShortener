@@ -10,6 +10,7 @@ class UrlNewController {
 
     $onInit() {
         this.slugPattern = '[A-Za-z0-9]{1,}';
+        this.hostName = HOSTNAME;
     }
     
     submit(valid) {

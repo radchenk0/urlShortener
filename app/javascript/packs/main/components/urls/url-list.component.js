@@ -12,14 +12,12 @@ class UrlListController {
         this.popovers = ['Show', 'Delete'];
         this.sortType     = 'counter'; 
         this.sortReverse  = false;  
-        let today = new Date().getUTCHours();
-        let days_left = {};
+        let today = new Date();
+        this.daysLeft = {};
         this.urls.forEach(url => {
-            let created_at = new Date(url.created_at).getUTCHours();
-            days_left[url.id] = 15 - Math.floor((today - created_at)/24);
+            let createdAt = new Date(url.created_at);
+            this.daysLeft[url.id] = Math.round(15 - (today-createdAt)/86400000);
         });
-        this.days_left = days_left;
-        
     }
 
     delete(url) {

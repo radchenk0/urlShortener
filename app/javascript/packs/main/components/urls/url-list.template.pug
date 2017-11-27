@@ -11,8 +11,8 @@ table.table.table-bordered.table-striped.action-table(ng-if='$ctrl.urls.length !
                 a(href='#' ng-click='$ctrl.sortType = "counter"; $ctrl.sortReverse = !$ctrl.sortReverse ') Usings 
                     span.fa(ng-show='$ctrl.sortType === "counter"' ng-class='$ctrl.sortReverse ? "fa-caret-up" : "fa-caret-down"')
             th 
-                a(href='#' ng-click='$ctrl.sortType = "days_left"; $ctrl.sortReverse = !$ctrl.sortReverse') Live 
-                    span.fa.fa-caret-down(ng-show='$ctrl.sortType === "days_left"')
+                a(href='#' ng-click='$ctrl.sortType = "daysLeft"; $ctrl.sortReverse = !$ctrl.sortReverse') Live 
+                    span.fa(ng-show='$ctrl.sortType === "daysLeft"' ng-class='$ctrl.sortReverse ? "fa-caret-up" : "fa-caret-down"')
             th(colspan='2') Actions
     tbody
         tr(ng-repeat='url in $ctrl.urls | orderBy:$ctrl.sortType:$ctrl.sortReverse')
@@ -20,7 +20,7 @@ table.table.table-bordered.table-striped.action-table(ng-if='$ctrl.urls.length !
             td {{url.original.length > 50 ? url.original.slice(0,50) + '...' : url.original}}
             td {{url.slug}}
             td {{url.counter}}
-            td {{$ctrl.days_left[url.id]}} dayls left
+            td {{$ctrl.daysLeft[url.id]}} days left
 
              
             td 
